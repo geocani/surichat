@@ -20,8 +20,30 @@ body, html {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 300px;
+    padding-top: 80px;
     background-color: rgb(138, 138, 138);
+}
+body{
+    background-color: rgb(138, 138, 138);
+}
+.log_ok{
+    width: 100%;
+}
+.log_50{
+    width: 49%;
+}
+.card{
+    -moz-box-shadow: 1px 1px 5px 0px #656565;
+    -webkit-box-shadow: 1px 1px 5px 0px #656565;
+    -o-box-shadow: 1px 1px 5px 0px #656565;
+    box-shadow: 1px 1px 5px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+}
+.erreur{
+    color: red;
+}
+.succses{
+    color: green;
 }
 /*--------------------------------------------------------------
 1.0 KEYFRAME:
