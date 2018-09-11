@@ -16,28 +16,84 @@
 *{
     box-sizing: border-box;
 }
+::placeholder{
+    color: white;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+    font-size: 20px;
+}
+input{
+    background: transparent;
+    font-size: 100%;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 body, html {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     padding-top: 80px;
-    background-color: rgb(138, 138, 138);
+    
 }
 body{
-    background-color: rgb(138, 138, 138);
+    background: transparent;
 }
 .log_ok{
     width: 100%;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+    background: transparent;
 }
-.log_50{
+.log_inscription{
     width: 49%;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+    background: transparent;
+    color: white;
+}
+input{
+    color: white;
+}
+.submit_log{
+    height: 60px;
+    background-color: #acd5ff;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    letter-spacing: -2px;
+    text-align: center;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.322);
+}
+.card-header{
+    background-color: #0058cb62;
+}
+.div{
+    border: 1px solid red;
+    width: 40%;
+    margin: auto;
 }
 .card{
     -moz-box-shadow: 1px 1px 5px 0px #656565;
     -webkit-box-shadow: 1px 1px 5px 0px #656565;
     -o-box-shadow: 1px 1px 5px 0px #656565;
     box-shadow: 1px 1px 5px 0px #656565;
-    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+    background-color: #61b0ff;
+
+}
+h2{
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+    letter-spacing: -2px;
+    text-align: center;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
 }
 .erreur{
     color: red;
@@ -48,6 +104,64 @@ body{
 /*--------------------------------------------------------------
 1.0 KEYFRAME:
 --------------------------------------------------------------*/
+html {
+    background: linear-gradient(253deg, #0cc898, #1797d2, #864fe1);
+    background-size: 300% 300%;
+    -webkit-animation: Background 25s ease infinite;
+    -moz-animation: Background 25s ease infinite;
+    animation: Background 25s ease infinite;
+  }
+  
+  @-webkit-keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  
+  @-moz-keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  
+  @keyframes Background {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+  
+
+  
+  h1 {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 4em;
+    letter-spacing: -2px;
+    text-align: center;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
+  }
+
+
+
 
 /*--------------------------------------------------------------
 2.0 HEADER:

@@ -21,9 +21,6 @@
 // BDD
 $bdd = new PDO("mysql: host=localhost; dbname=surichat; charset=utf8", "root", "");
 
-
-
-
 if (isset($_POST['inscription'])){
     if (!empty($_POST['inscription_log']) AND !empty($_POST['inscription_email']) AND !empty($_POST['inscription_mdp1']) AND !empty($_POST['inscription_mdp2'])){
 
@@ -57,12 +54,10 @@ if (isset($_POST['inscription'])){
     }
 }
 
-
-
 ?>
 
 
-
+<!-- <h1>Surichat</h1> -->
 <br><br><br>
 <div class="container">
     <div class="row"> 
@@ -77,7 +72,9 @@ if (isset($_POST['inscription'])){
                         <form action="" method="POST">
                             <input type="text" class="log_ok" name="log_ok" id="logOk" placeholder="Login">
                             <input type="text" class="log_ok" name="pass_ok" id="passOk" placeholder="password">
-                            <input type="submit" class="log_ok" name="login_ok" id="loginOk" value="Login">
+                            <div class="div">
+                                <input type="submit" class="submit_log" name="login_ok" id="loginOk" value="Login">
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -93,11 +90,13 @@ if (isset($_POST['inscription'])){
                 <div class="card-body">
                     <div class="login_suri">
                         <form action="" method="POST">
-                            <input type="text" class="log_50" name="inscription_log" id="logOk" placeholder="Login">
-                            <input type="text" class="log_50" name="inscription_email" id="passOk" placeholder="Email">
-                            <input type="text" class="log_50" name="inscription_mdp1" id="passOk" placeholder="password"> 
-                            <input type="text" class="log_50" name="inscription_mdp2" id="passOk" placeholder="Confirm password"> 
-                            <input type="submit" class="log_ok" name="inscription" id="inscription" value="Inscription">
+                            <input type="text" class="log_inscription" name="inscription_log" id="logOk" placeholder="Login">
+                            <input type="text" class="log_inscription" name="inscription_email" id="passOk" placeholder="Email">
+                            <input type="text" class="log_inscription" name="inscription_mdp1" id="passOk" placeholder="password"> 
+                            <input type="text" class="log_inscription" name="inscription_mdp2" id="passOk" placeholder="Confirm password"> 
+                            <div class="div">
+                                <input type="submit" class="submit_log" name="inscription" id="inscription" value="Inscription">
+                            </div>
                         </form>
                     </div>
                 </div>
