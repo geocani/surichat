@@ -17,8 +17,10 @@
 
 </style>
 
+
 <?php
-// BDD
+session_start();
+// INSCRIPTION
 $bdd = new PDO("mysql: host=localhost; dbname=surichat; charset=utf8", "root", "");
 
 if (isset($_POST['inscription'])){
@@ -28,8 +30,10 @@ if (isset($_POST['inscription'])){
         $login = htmlspecialchars($_POST['inscription_log']);
         $strlen_login = strlen($login);
         $email = filter_var($_POST['inscription_email'], FILTER_SANITIZE_EMAIL);
-        $mdp1 = sha1($_POST['inscription_mdp1']);
-        $mdp2 = sha1($_POST['inscription_mdp2']);
+        // $mdp1 = sha1($_POST['inscription_mdp1']);
+        // $mdp2 = sha1($_POST['inscription_mdp2']);
+        $mdp1 = ($_POST['inscription_mdp1']);
+        $mdp2 = ($_POST['inscription_mdp2']);
 
         if ($strlen_login <= 50){
             if ($mdp1 === $mdp2){
@@ -53,7 +57,33 @@ if (isset($_POST['inscription'])){
         $erreur = "Vous devez remplire tout les champs.";
     }
 }
+?>
 
+<?php
+// CONNEXION
+if (isset($_POST['login_ok'])){
+    if (!empty($_POST['log_ok']) AND !empty($_POST['pass_ok'])){
+
+        $login_ok = htmlspecialchars($_POST['log_ok']);
+        $pass_ok = ($_POST['pass_ok']);
+
+        $requser = $bdd->prepare("SELECT * FROM membres WHERE login = ? AND pass = ?");
+        $requser->execute(array($login_ok, $pass_ok));
+
+        $user_exist = $requser->rowCount(); // Compte le nombre de rangée si il y en a
+
+        if ($user_exist == 1){
+            $user_info = $requser->fetch();
+            $_SESSION['id'] = $user_info['id'];
+            $_SESSION['login'] = $user_info['login'];
+            $_SESSION['email'] = $user_info['email'];
+            header("location: profil.php?id=".$_SESSION['id']);
+        }else{
+            $erreur = "ERREUR login ou mot de passe";
+        }
+
+    }
+}
 ?>
 
 
