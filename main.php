@@ -92,7 +92,7 @@ if (isset($_POST['login_ok'])){
 <!-- <h1>Surichat</h1> -->
 <br><br>
 <div class="logo_main">
-    <img src="img/logo.svg" alt="">
+    <img src="img/logo_color4.gif" width="20%" alt="logo">
 </div>
 <br><br>
 <div class="container">
