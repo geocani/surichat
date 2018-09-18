@@ -46,15 +46,15 @@ if (isset($_POST['inscription'])){
                 // }
                     $insertmembre = $bdd->prepare("INSERT INTO membres(login, pass, email) VALUES(?, ?, ?)");
                     $insertmembre->execute(array($login, $mdp1, $email));
-                    $succses = "Vous êtes correctement inscrit!";
+                    $succses_ins = "* Vous êtes correctement inscrit!";
             }else{
-                $erreur = "Vos mots de passe ne sont pas identique.";
+                $erreur_ins = "* Vos mots de passe ne sont pas identique.";
             }
         }else{
-            $erreur = "Votre pseudo ne doit pas depasser 50 caractères.";
+            $erreur_ins = "* Votre pseudo ne doit pas depasser 50 caractères.";
         }
     }else{
-        $erreur = "Vous devez remplire tout les champs.";
+        $erreur_ins = "* Vous devez remplire tout les champs.";
     }
 }
 ?>
@@ -79,16 +79,22 @@ if (isset($_POST['login_ok'])){
             $_SESSION['email'] = $user_info['email'];
             header("location: profil.php?id=".$_SESSION['id']);
         }else{
-            $erreur = "ERREUR login ou mot de passe";
+            $erreur_log = "* ERREUR login ou mot de passe";
         }
 
+    }else{
+        $erreur_log = "* ERREUR !!!!!!!!!!!!";
     }
 }
 ?>
 
 
 <!-- <h1>Surichat</h1> -->
-<br><br><br>
+<br><br>
+<div class="logo_main">
+    <img src="img/logo.svg" alt="">
+</div>
+<br><br>
 <div class="container">
     <div class="row"> 
         <!-- Card 1 -->
@@ -108,6 +114,11 @@ if (isset($_POST['login_ok'])){
                         </form>
                     </div>
                 </div>
+            </div>
+            <!-- ERREUR -->
+            <div class="cont_erreur">
+                <?php if (isset($erreur_log)){ echo "<p class='erreur'>" . $erreur_log . "</p>"; }; ?>
+                <?php if (isset($succses)){ echo "<p class='succses'>" . $succses . "</p>"; }; ?>
             </div>
         </div>
         <!-- End Card 1 -->
@@ -131,19 +142,15 @@ if (isset($_POST['login_ok'])){
                     </div>
                 </div>
             </div>
+            <!-- ERREUR -->
+            <div class="cont_erreur">
+                <?php if (isset($erreur_ins)){ echo "<p class='erreur'>" . $erreur_ins . "</p>"; }; ?>
+                <?php if (isset($succses_ins)){ echo "<p class='succses'>" . $succses_ins . "</p>"; }; ?>
+            </div>
         </div>
         <!-- End Card 2 -->
-        <?php if (isset($erreur)){ echo "<p class='erreur'>" . $erreur . "</p>"; }; ?>
-        <?php if (isset($succses)){ echo "<p class='succses'>" . $succses . "</p>"; }; ?>
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 

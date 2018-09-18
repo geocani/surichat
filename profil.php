@@ -42,6 +42,7 @@ $user_info = $requser->fetch();
 
 
 
+
 ?>
 
 
@@ -60,7 +61,7 @@ $user_info = $requser->fetch();
                         <p>Pseudo = <?php echo $user_info['login']; ?></p>
                         <p>Mail = <?php echo $user_info['email']; ?></p>
                         <a href="deconnexion.php">DECONNEXION</a> <br>
-                        <a href="edit_profil.php">Editer son profil</a>
+                        <a href="edit_profil.php<?php echo '?id=13'?>">Editer son profil</a> <!-- TROUVER SOLUTION CONCATENATION -->
                     </div>
                 </div>
             </div>

@@ -32,8 +32,26 @@ if ($user_id == $_SESSION['id']){ // Vérifie si l'id en GET est bien celui de l
 
 $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
 $requser->execute(array($user_id));
-$user_info = $requser->fetch();
+$user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
 
+    if (isset($_POST['new_submit'])){
+
+        if(isset($_POST['new_login']) AND !empty($_POST['new_login']) AND $_POST['new_login'] != $user['login']){
+        
+            $insert_pseudo = $bdd->prepare("UPDATE membres SET login = ? WHERE id = ? ");
+            $insert_pseudo->execute(array($_POST['new_login'], $_SESSION['id']));
+            header('location: profil.php?id='.$_SESSION['id']);
+
+
+
+
+        }else{
+            echo "pas ok";
+        }
+    }else{
+        echo "non";
+    }
+    
 }else{
     echo "non";
 }
@@ -53,15 +71,20 @@ $user_info = $requser->fetch();
         <!-- Card 1 -->
             <div class="card card_profil">
                 <div class="card-header">
-                    <h2>Edition Profil de <?php echo $user_info['login']; ?></h2>
+                    <h2>Edition Profil de <?php echo $_SESSION['login']; ?></h2>
                 </div>
                 <div class="card-body">
-                    <div class="login_suri">
-                        <p>Pseudo = <?php echo $user_info['login']; ?></p>
-                        <p>Mail = <?php echo $user_info['email']; ?></p>
-                        <a href="deconnexion.php">DECONNEXION</a> <br>
-                        <a href="edit_profil.php">Editer son profil</a>
-                    </div>
+                    <form action="" method="POST">
+                        <label for="">Nouveau login: </label>
+                        <input type="text" name="new_login" id="" placeholder="Nouveau login" value="<?php echo $user['login'];?>"><br>
+                        <label for="">Nouveau email: </label>
+                        <input type="text" name="new_email" id="" placeholder="Nouvel email" value="<?php echo $user['email'];?>"><br>
+                        <label for="">Nouveau pass: </label>
+                        <input type="text" name="new_pass1" id="" placeholder="*******"><br>
+                        <label for="">Condirmation pass: </label>
+                        <input type="text" name="new_pass2" id="" placeholder="*******"><br>
+                        <input type="submit" name="new_submit" id="">
+                    </form>
                 </div>
             </div>
         <!-- End Card 1 -->

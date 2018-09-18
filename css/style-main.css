@@ -32,7 +32,7 @@ body, html {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 80px;
+
     color: white;
     
 }
@@ -57,11 +57,12 @@ h2{
     text-align: center;
     text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
 }
-.erreur{
-    color: red;
-}
+
 .succses{
     color: green;
+}
+.logo_main{
+    text-align: center;
 }
 /*--------------------------------------------------------------
 1.0 KEYFRAME:
@@ -134,23 +135,38 @@ html {
 }
 .submit_log{
     height: 60px;
-    background-color: #acd5ff;
+    width: 50%;
+    background-color: #acd6ff00;
+    background-color: #0058cb65;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
-    font-size: 1.3em;
+    font-size: 1.7em;
     letter-spacing: -2px;
     text-align: center;
     text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.322);
+    margin: auto;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.submit_log:hover{
+    text-shadow: none;
+    transition: 0.5s;
+    background-color: #acd6ff94;
+    background-color: #0058cb3d;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.div{
+    margin-top: 20px;
+    text-align: center;
 }
 .card-header{
     background-color: #0058cb62;
 }
-.div{
-    border: 1px solid red;
-    width: 40%;
-    margin: auto;
-}
+
 .card{
     -moz-box-shadow: 1px 1px 5px 0px #656565;
     -webkit-box-shadow: 1px 1px 5px 0px #656565;
@@ -162,6 +178,16 @@ html {
         margin: auto;
         width: 700px;
         height: 800px;
+}
+.cont_erreur{
+    width: 100%;
+    text-align: center;
+    color: #990000;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.erreur{
+text-align: center;
 }
 /*--------------------------------------------------------------
 4.0 FOOTER:
