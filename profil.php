@@ -58,10 +58,18 @@ $user_info = $requser->fetch();
                 </div>
                 <div class="card-body">
                     <div class="login_suri">
-                        <p>Pseudo = <?php echo $user_info['login']; ?></p>
-                        <p>Mail = <?php echo $user_info['email']; ?></p>
+                        <div class="avatar">
+
+                        </div>
+                        <br>
+                        <p><strong>Nom:</strong><?php echo $user_info['nom']; ?></p>
+                        <p><strong> Prénom:</strong><?php echo $user_info['prenom']; ?></p>
+                        <p><strong>Age:</strong><?php echo $user_info['age']; ?></p>
+                        <p><strong>Genre:</strong><?php echo $user_info['genre']; ?></p>
+                        <p><strong>Pseudo:</strong> <?php echo $user_info['login']; ?></p>
+                        <p><strong>Mail:</strong> <?php echo $user_info['email']; ?></p>
                         <a href="deconnexion.php">DECONNEXION</a> <br>
-                        <a href="edit_profil.php<?php echo '?id=13'?>">Editer son profil</a> <!-- TROUVER SOLUTION CONCATENATION -->
+                        <a href="edit_profil.php<?php echo '?id=' .$user_id ?>">Editer son profil</a>
                     </div>
                 </div>
             </div>

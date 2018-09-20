@@ -77,6 +77,10 @@ if (isset($_POST['login_ok'])){
             $_SESSION['id'] = $user_info['id'];
             $_SESSION['login'] = $user_info['login'];
             $_SESSION['email'] = $user_info['email'];
+            $_SESSION['nom'] = $user_info['nom'];
+            $_SESSION['prenom'] = $user_info['prenom'];
+            $_SESSION['age'] = $user_info['age'];
+            $_SESSION['age'] = $user_info['genre'];
             header("location: profil.php?id=".$_SESSION['id']);
         }else{
             $erreur_log = "* ERREUR login ou mot de passe";
@@ -92,7 +96,7 @@ if (isset($_POST['login_ok'])){
 <!-- <h1>Surichat</h1> -->
 <br><br>
 <div class="logo_main">
-    <img src="img/logo_color4.gif" width="20%" alt="logo">
+    <img src="img/logo_color1.svg" width="20%" alt="logo">
 </div>
 <br><br>
 <div class="container">
@@ -107,7 +111,7 @@ if (isset($_POST['login_ok'])){
                     <div class="login_suri">
                         <form action="" method="POST">
                             <input type="text" class="log_ok" name="log_ok" id="logOk" placeholder="Login">
-                            <input type="text" class="log_ok" name="pass_ok" id="passOk" placeholder="password">
+                            <input type="password" class="pass_ok" name="pass_ok" id="passOk" placeholder="password">
                             <div class="div">
                                 <input type="submit" class="submit_log" name="login_ok" id="loginOk" value="Login">
                             </div>
@@ -132,9 +136,9 @@ if (isset($_POST['login_ok'])){
                     <div class="login_suri">
                         <form action="" method="POST">
                             <input type="text" class="log_inscription" name="inscription_log" id="logOk" placeholder="Login">
-                            <input type="text" class="log_inscription" name="inscription_email" id="passOk" placeholder="Email">
-                            <input type="text" class="log_inscription" name="inscription_mdp1" id="passOk" placeholder="password"> 
-                            <input type="text" class="log_inscription" name="inscription_mdp2" id="passOk" placeholder="Confirm password"> 
+                            <input type="text" class="mail_inscription" name="inscription_email" id="passOk" placeholder="Email">
+                            <input type="password" class="pass1_inscription" name="inscription_mdp1" id="passOk" placeholder="password"> 
+                            <input type="password" class="pass2_inscription" name="inscription_mdp2" id="passOk" placeholder="Confirm"> 
                             <div class="div">
                                 <input type="submit" class="submit_log" name="inscription" id="inscription" value="Inscription">
                             </div>
