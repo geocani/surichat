@@ -59,7 +59,7 @@ $user_info = $requser->fetch();
                 <div class="card-body">
                     <div class="login_suri">
                         <div class="avatar">
-
+                            <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width=100px>
                         </div>
                         <br>
                         <p><strong>Nom:</strong><?php echo $user_info['nom']; ?></p>

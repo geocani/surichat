@@ -34,6 +34,42 @@ $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
 $requser->execute(array($user_id));
 $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
 
+    // NEW AVATAR
+    if(isset($_POST['submit_avatar'])){
+        if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
+
+            $taille_max = 2097152;
+            $extention_valide = array('jpg', 'jpeg', 'gif', 'png');
+
+            if($_FILES['avatar']['size'] <= $taille_max){ // VERIF TAILLE
+                $extention_uploade = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1)); // VERIF EXTENTION
+                if(in_array($extention_uploade, $extention_valide)){ // in_array -> si dans le tableau
+                    $chemin_avatar = "membres/avatars/" .$_SESSION['id']. "." .$extention_uploade; // Renomer le fichier par ID
+                    $deplacement = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin_avatar ); // DEPLACEMENT vers dossier de reception
+                    if($deplacement){
+
+                        $insert_avatar = $bdd->prepare('UPDATE membres SET avatar = :avatar WHERE id = :id ');
+                        $insert_avatar-> execute(array(
+                            'avatar' => $_SESSION['id'].".".$extention_uploade,
+                            'id' => $_SESSION['id']
+                        ));
+                        header('location: profil.php?id='.$_SESSION['id']);
+
+                    }else{
+                        echo "ERREUR";
+                    }
+                }else{
+                    echo "pas bon format";
+                }
+            }else{
+                echo "Fichier trop grand";
+            }
+        }
+    }else{
+        echo "ERREUR - Avatar";
+    }
+
+
     if (isset($_POST['new_submit'])){
         // NEW LOGIN
         if(isset($_POST['new_login']) AND !empty($_POST['new_login']) AND $_POST['new_login'] != $user['login']){
@@ -117,9 +153,9 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
                 </div>
                 <div class="card-body">
                     <div class="avatar">
-
+                        <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width=100px>
                     </div>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <input type="file" name="avatar" id="">
                         <input type="submit" name="submit_avatar" id="">
                     </form>
@@ -152,7 +188,8 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
                         <input type="text" name="new_genre" id="" placeholder=""><br>
 
                         <input type="submit" name="new_submit" id="">
-                        
+                        <br>
+                        <a href="profil.php<?php echo '?id=' .$user_id ?>">RETOUR</a>
                     </form>
                 </div>
             </div>
