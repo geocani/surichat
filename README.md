@@ -1,1 +1,1 @@
-<img src="img/logo_color.svg" alt="logo">
+<img src="img/logo_color4.gif" alt="logo">
