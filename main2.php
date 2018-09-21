@@ -153,7 +153,7 @@ if (isset($_POST['login_ok'])){
         <!-- COPY -->
         <div class="col-md-12"> 
             <div class="copy">
-                <p>SuriKate - SuriChat - 2018 - Contact </p>
+                <p>© 2018 - SuriKate / SuriChat - www.surikate.be </p>
             </div>
         </div>
     </div>
