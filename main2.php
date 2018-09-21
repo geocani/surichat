@@ -102,14 +102,14 @@ if (isset($_POST['login_ok'])){
 
 
 <style>
-.con{
-    border: 5px solid rgba(0, 0, 0, 0.377);
-    border: 5px solid rgba(0, 0, 0);
-    border-radius: 5px;
-    padding: 0px 20px 0px 20px;
-}
+
 
 </style>
+
+
+
+
+
 
 <div class="container">
     <div class="row"> 

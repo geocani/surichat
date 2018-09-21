@@ -22,10 +22,6 @@ session_start();
 
 $bdd = new PDO("mysql: host=localhost; dbname=surichat; charset=utf8", "root", "");
 
-
-
-
-
 $user_id = $_GET['id'];
 
 if ($user_id == $_SESSION['id']){ // Vérifie si l'id en GET est bien celui de la SESSION
@@ -37,116 +33,74 @@ $user_info = $requser->fetch();
 }else{
     echo "non";
 }
-
-
-
-
-
-
 ?>
 
-
+<a href="deconnexion2.php">R E T O U R</a>
 <br><br>
 <div class="logo_main">
     <img src="img/logo_color1.svg" width="20%" alt="logo">
 </div>
 <br><br>
 <!-- <h1>Surichat</h1> -->
-<br><br><br>
+
 <div class="container">
-    <div class="row"> 
-        <!-- Card 1 -->
-            <div class="card card_profil">
-                <div class="card-header">
-                    <h2>Profil de <?php echo $user_info['login']; ?></h2>
+    <div class="row">
+        <!-- CHAT -->
+        <div class="col-md-9"> 
+            <h3>CHAT</h3>
+            <div class="chat">
+                <div class="row">
+                    <div class="col-md-12 bt">
+                        <div class="send_msg msg">
+                            <form action="">
+                                <input type="text" class="inp_send_msg" name="send_msg" id="" placeholder="Ecrivez votre message ici">
+                                <input type="submit" name="" id="" value="ENVOYER">
+                            </form>
+                        </div> 
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="login_suri">
-                        <div class="avatar">
-                            <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width=100px>
+
+            </div>
+        </div>
+        <!-- ONLINE -->
+        <div class="col-md-3"> 
+            <h3>ONLINE</h3>
+            <div class="online">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- PROFIL -->
+        <div class="col-md-12"> 
+            <h3>Votre Profil</h3>
+            <a href="#">Editer</a>
+            <div class="cont-profil">
+                <div class="profil">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>SURIKATE</h3>
+                            <div class="avat">
+                                PHOTO
+                            </div>
                         </div>
-                        <br>
-                        <p><strong>Nom:</strong><?php echo $user_info['nom']; ?></p>
-                        <p><strong> Prénom:</strong><?php echo $user_info['prenom']; ?></p>
-                        <p><strong>Age:</strong><?php echo $user_info['age']; ?></p>
-                        <p><strong>Genre:</strong><?php echo $user_info['genre']; ?></p>
-                        <p><strong>Pseudo:</strong> <?php echo $user_info['login']; ?></p>
-                        <p><strong>Mail:</strong> <?php echo $user_info['email']; ?></p>
-                        <a href="deconnexion2.php">DECONNEXION</a> <br>
-                        <a href="edit_profil2.php<?php echo '?id=' .$user_id ?>">Editer son profil</a>
+                        <div class="col-md-4">
+                            <p><span class="bold">un:</span> un</p>
+                            <p><span class="bold">deux:</span> deux</p>
+                            <p><span class="bold">trois:</span> trois</p>
+                            <p><span class="bold">quatre:</span> quatre</p>
+                        </div>
+                        <div class="col-md-4">
+                        <p><span class="bold">un:</span> un</p>
+                            <p><span class="bold">deux:</span> deux</p>
+                            <p><span class="bold">trois:</span> trois</p>
+                            <p><span class="bold">quatre:</span> quatre</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        <!-- End Card 1 -->
-        
-        <?php if (isset($erreur)){ echo "<p class='erreur'>" . $erreur . "</p>"; }; ?>
-        <?php if (isset($succses)){ echo "<p class='succses'>" . $succses . "</p>"; }; ?>
-    </div>
-</div>
-
-
-
-
-<div class="container">
-    <div class="row"> 
-        <!-- CARD 1 -->
-        <div class="col-md-6">
-            <h3>Connexion</h3>
-            <div class="con">
-                <div class="login_suri">
-                    <form action="" method="POST">
-                        <input type="text" class="log_ok" name="log_ok" id="logOk" placeholder="Login">
-                        <input type="password" class="pass_ok" name="pass_ok" id="passOk" placeholder="password">
-                        <div class="div">
-                            <input type="submit" class="submit_log" name="login_ok" id="loginOk" value="Login">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- CARD 2 -->
-        <div class="col-md-6">
-            <h3>Inscription</h3>
-            <div class="con">
-                <div class="login_suri">
-                    <form action="" method="POST">
-                        <input type="text" class="log_inscription" name="inscription_log" id="logOk" placeholder="Login">
-                        <input type="text" class="mail_inscription" name="inscription_email" id="passOk" placeholder="Email">
-                        <input type="password" class="pass1_inscription" name="inscription_mdp1" id="passOk" placeholder="password"> 
-                        <input type="password" class="pass2_inscription" name="inscription_mdp2" id="passOk" placeholder="Confirm"> 
-                        <div class="div">
-                            <input type="submit" class="submit_log" name="inscription" id="inscription" value="Inscription">
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-<br><br>
-<div class="container">
-    <div class="row">
-        <!-- COPY -->
-        <div class="col-md-12"> 
-            <div class="copy">
-                <p>SuriKate - SuriChat - 2018 - Contact </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
