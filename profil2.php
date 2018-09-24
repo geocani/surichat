@@ -36,6 +36,11 @@ $user_info = $requser->fetch();
 ?>
 
 <a href="deconnexion2.php">R E T O U R</a>
+
+<?php 
+echo $user_info['avatar'];
+
+?>
 <br><br>
 <div class="logo_main">
     <img src="img/logo_color1.svg" width="20%" alt="logo">
@@ -73,25 +78,25 @@ $user_info = $requser->fetch();
         <!-- PROFIL -->
         <div class="col-md-12"> 
             <h3>Votre Profil</h3>
-            <a href="#">Editer</a>
+            <a href="edit_profil2.php<?php echo '?id=' .$user_id ?>">Editer</a>
             <div class="cont-profil">
                 <div class="profil">
                     <div class="row">
                         <div class="col-md-4">
                             <h3>SURIKATE</h3>
                             <div class="avat">
-                                PHOTO
+                                <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width="100px">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <p><span class="bold">un:</span> un</p>
-                            <p><span class="bold">deux:</span> deux</p>
-                            <p><span class="bold">trois:</span> trois</p>
-                            <p><span class="bold">quatre:</span> quatre</p>
+                            <p><span class="bold">Nom:</span> <?php echo $user_info['nom']; ?></p>
+                            <p><span class="bold">Prenom:</span> <?php echo $user_info['prenom']; ?></p>
+                            <p><span class="bold">Age:</span> <?php echo $user_info['age']; ?></p>
+                            <p><span class="bold">Genre:</span> <?php echo $user_info['genre']; ?></p>
                         </div>
                         <div class="col-md-4">
-                        <p><span class="bold">un:</span> un</p>
-                            <p><span class="bold">deux:</span> deux</p>
+                            <p><span class="bold">un:</span> <?php echo $user_info['login']; ?></p>
+                            <p><span class="bold">deux:</span> <?php echo $user_info['email']; ?></p>
                             <p><span class="bold">trois:</span> trois</p>
                             <p><span class="bold">quatre:</span> quatre</p>
                         </div>

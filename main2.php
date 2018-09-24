@@ -80,7 +80,8 @@ if (isset($_POST['login_ok'])){
             $_SESSION['nom'] = $user_info['nom'];
             $_SESSION['prenom'] = $user_info['prenom'];
             $_SESSION['age'] = $user_info['age'];
-            $_SESSION['age'] = $user_info['genre'];
+            $_SESSION['genre'] = $user_info['genre'];
+            $_SESSION['avatar'] = $user_info['avatar'];
             header("location: profil2.php?id=".$_SESSION['id']);
         }else{
             $erreur_log = "* ERREUR login ou mot de passe";
