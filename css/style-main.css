@@ -48,7 +48,7 @@ h2{
     text-shadow: 1px 2px 1px rgba(0, 0, 0, .6);
 }
 h3{
-    padding-left: 30px;
+    /* padding-left: 30px; */
     font-family: MV Boli;
     font-family: 'Open Sans', sans-serif;
     color: black;
@@ -64,6 +64,23 @@ h3{
 }
 .logo_main{
     text-align: center;
+}
+.edit_pro{
+    color: rgba(0, 0, 0, 0.411);
+    font-size: 15px;
+}
+.edit_profil{
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    border: 5px solid rgba(0, 0, 0, 0.377);
+    color: rgba(0, 0, 0, 0.377);
+}
+.test_inp{
+
+}
+.test_inp_msg{
+    width:100%;
 }
 /*--------------------------------------------------------------
 1.0 KEYFRAME:
@@ -308,20 +325,21 @@ text-align: center;
     width: 100%;
     border-radius: 5px;
     border: 5px solid rgba(0, 0, 0, 0.377);
-    color: rgba(0, 0, 0, 0.377);
+    color: rgb(0, 0, 0);
+    padding: 20px 0px 20px 20px;
 }
 .profil{
 
 }
 .send_msg{
     width: 100%;
-    border-radius: 5px;
+
     border: none;
     border-top: 5px solid rgba(0, 0, 0, 0.377);
     color: rgba(0, 0, 0, 0.377);
 }
 .inp_send_msg{
-    width: 85%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.288);
     border: none;
 }
@@ -351,6 +369,27 @@ text-align: center;
 }
 .bold{
     font-weight: bold;
+}
+.log_php{
+
+}
+.padd{
+}
+.inp_msg{
+    padding: 10px 0px 0px 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.288);
+    border: none;
+}
+.inp_msg_sub{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.288);
+    border: none;
+}
+.inp_msg_sub:hover{
+    width: 100%;
+    background-color: rgba(175, 43, 43, 0.288);
+    border: none;
 }
 
 /*--------------------------------------------------------------

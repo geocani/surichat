@@ -75,7 +75,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_login']) AND !empty($_POST['new_login']) AND $_POST['new_login'] != $user['login']){
             $insert_pseudo = $bdd->prepare("UPDATE membres SET login = ? WHERE id = ? ");
             $insert_pseudo->execute(array($_POST['new_login'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -83,7 +83,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_email']) AND !empty($_POST['new_email']) AND $_POST["new_email"] != $user['email']){
             $insert_email = $bdd->prepare("UPDATE membres SET email = ? WHERE id = ? ");
             $insert_email->execute(array($_POST['new_email'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -91,7 +91,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_nom']) AND !empty($_POST['new_nom'])){ //AND $_POST["new_nom"] != $user['nom']){
             $insert_email = $bdd->prepare("UPDATE membres SET nom = ? WHERE id = ? ");
             $insert_email->execute(array($_POST['new_nom'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -99,7 +99,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_prenom']) AND !empty($_POST['new_prenom'])){ //AND $_POST["new_nom"] != $user['nom']){
             $insert_email = $bdd->prepare("UPDATE membres SET prenom = ? WHERE id = ? ");
             $insert_email->execute(array($_POST['new_prenom'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -107,7 +107,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_age']) AND !empty($_POST['new_age'])){ //AND $_POST["new_nom"] != $user['nom']){
             $insert_email = $bdd->prepare("UPDATE membres SET age = ? WHERE id = ? ");
             $insert_email->execute(array($_POST['new_age'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -115,7 +115,7 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
         if(isset($_POST['new_genre']) AND !empty($_POST['new_genre'])){ //AND $_POST["new_nom"] != $user['nom']){
             $insert_email = $bdd->prepare("UPDATE membres SET genre = ? WHERE id = ? ");
             $insert_email->execute(array($_POST['new_genre'], $_SESSION['id']));
-            header('location: profil.php?id='.$_SESSION['id']);
+            header('location: profil2.php?id='.$_SESSION['id']);
         }else{
             echo "pas ok";
         }
@@ -139,64 +139,39 @@ $user = $requser->fetch(); // WHILE pour plusieur donnée FETCH pour une donnée
 
 
 ?>
-
-
-
-<!-- <h1>Surichat</h1> -->
-<br><br><br>
+<h2>Edition Profil de <?php echo $_SESSION['login']; ?></h2>
 <div class="container">
-    <div class="row"> 
-        <!-- Card 1 -->
-            <div class="card card_profil">
-                <div class="card-header">
-                    <h2>Edition Profil de <?php echo $_SESSION['login']; ?></h2>
-                </div>
-                <div class="card-body">
-                    <div class="avatar">
-                        <!-- <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width=100px> -->
-                    </div>
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="avatar" id="">
-                        <input type="submit" name="submit_avatar" id="">
-                    </form>
-                    <br>
-                    <form action="" method="POST">
-                        <label for="">Login: </label>
-                        <input type="text" name="new_login" id="" placeholder="Nouveau login" value="<?php echo $user['login'];?>"><br><br><br><br>
-                        <label for="">Email: </label>
-                        <input type="text" name="new_email" id="" placeholder="Nouvel email" value="<?php echo $user['email'];?>"><br><br><br><br>
-                        <label for="">Ancien pass: </label>
-                        <input type="text" name="new_pass1" id="" placeholder="*******"><br><br><br><br>
-                        <label for="">Nouveau pass: </label>
-                        <input type="text" name="new_pass1" id="" placeholder="*******"><br><br><br><br>
-                        <label for="">Confirmation: </label>
-                        <input type="text" name="new_pass2" id="" placeholder="*******"><br><br><br><br>
+    <div class="row">
+        <div class="edit_profil">
+        <form action="" method="POST">
+            <label for="">Login: </label>
+            <input type="text" name="new_login" id="" placeholder="Nouveau login" value="<?php echo $user['login'];?>"><br>
+            <label for="">Email: </label>
+            <input type="text" name="new_email" id="" placeholder="Nouvel email" value="<?php echo $user['email'];?>"><br>
+            <label for="">Ancien pass: </label>
+            <input type="text" name="new_pass1" id="" placeholder="*******"><br>
+            <label for="">Nouveau pass: </label>
+            <input type="text" name="new_pass1" id="" placeholder="*******"><br>
+            <label for="">Confirmation: </label>
+            <input type="text" name="new_pass2" id="" placeholder="*******"><br>
 
+            <label for="">Nom: </label>
+            <input type="text" name="new_nom" id="" placeholder=""><br>
 
+            <label for="">Prenom: </label>
+            <input type="text" name="new_prenom" id="" placeholder=""><br>
 
+            <label for="">Age: </label>
+            <input type="number" name="new_age" id="" placeholder=""><br>
 
-                        <label for="">Nom: </label>
-                        <input type="text" name="new_nom" id="" placeholder=""><br><br><br><br>
+            <label for="">Genre: </label>
+            <input type="text" name="new_genre" id="" placeholder=""><br>
 
-                        <label for="">Prenom: </label>
-                        <input type="text" name="new_prenom" id="" placeholder=""><br><br><br><br>
-
-                        <label for="">Age: </label>
-                        <input type="number" name="new_age" id="" placeholder=""><br><br><br><br>
-
-                        <label for="">Genre: </label>
-                        <input type="text" name="new_genre" id="" placeholder=""><br><br><br><br>
-
-                        <input type="submit" name="new_submit" id="">
-                        <br>
-                        <a href="profil2.php<?php echo '?id=' .$user_id ?>">RETOUR</a>
-                    </form>
-                </div>
-            </div>
-        <!-- End Card 1 -->
-        
-        <?php if (isset($erreur)){ echo "<p class='erreur'>" . $erreur . "</p>"; }; ?>
-        <?php if (isset($succses)){ echo "<p class='succses'>" . $succses . "</p>"; }; ?>
+            <input type="submit" name="new_submit" id="">
+            <br>
+            <a href="profil2.php<?php echo '?id=' .$user_id ?>">RETOUR</a>
+        </form>
+        </div>
     </div>
 </div>
 

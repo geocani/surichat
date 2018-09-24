@@ -35,12 +35,7 @@ $user_info = $requser->fetch();
 }
 ?>
 
-<a href="deconnexion2.php">R E T O U R</a>
 
-<?php 
-echo $user_info['avatar'];
-
-?>
 <br><br>
 <div class="logo_main">
     <img src="img/logo_color1.svg" width="20%" alt="logo">
@@ -58,8 +53,14 @@ echo $user_info['avatar'];
                     <div class="col-md-12 bt">
                         <div class="send_msg msg">
                             <form action="">
-                                <input type="text" class="inp_send_msg" name="send_msg" id="" placeholder="Ecrivez votre message ici">
-                                <input type="submit" name="" id="" value="ENVOYER">
+                            <div class="test_inp">
+                                <div class="un">
+                                    <input type="text" class="inp_msg" name="" id="" placeholder="Ecrivez votre message ici ...">
+                                </div>
+                                <div class="deux">
+                                    <input type="submit" name="" class="inp_msg_sub" id="">
+                                </div>
+                            </div>
                             </form>
                         </div> 
                     </div>
@@ -76,17 +77,19 @@ echo $user_info['avatar'];
     </div>
     <div class="row">
         <!-- PROFIL -->
+        <div class="padd"><br></div>
         <div class="col-md-12"> 
-            <h3>Votre Profil</h3>
-            <a href="edit_profil2.php<?php echo '?id=' .$user_id ?>">Editer</a>
+            <h3>Votre Profil <span class="edit_pro"> <a href="deconnexion2.php">D E C O N N E X I O N </a> </span></h3>
+            
             <div class="cont-profil">
                 <div class="profil">
                     <div class="row">
                         <div class="col-md-4">
-                            <h3>SURIKATE</h3>
+                            <h3><?php echo $user_info['login']; ?></h3>
                             <div class="avat">
                                 <img src="membres/avatars/<?php echo $user_info['avatar']; ?> " alt="" width="100px">
                             </div>
+                            <a href="edit_profil2.php<?php echo '?id=' .$user_id ?>">E D I T E R</a>
                         </div>
                         <div class="col-md-4">
                             <p><span class="bold">Nom:</span> <?php echo $user_info['nom']; ?></p>
