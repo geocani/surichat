@@ -12,35 +12,23 @@
     <title>TITRE</title>
 </head>
 <body>
-<style>
-
-</style>
-
-
 <?php
-session_start();
+    session_start();
 
-$bdd = new PDO("mysql: host=localhost; dbname=surichat; charset=utf8", "root", "");
+    $bdd = new PDO("mysql: host=localhost; dbname=surichat; charset=utf8", "root", "");
 
-$user_id = $_GET['id'];
+    $user_id = $_GET['id'];
 
-if ($user_id == $_SESSION['id']){ // Vérifie si l'id en GET est bien celui de la SESSION
+    if ($user_id == $_SESSION['id']){ // Vérifie si l'id en GET est bien celui de la SESSION
 
-$requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-$requser->execute(array($user_id));
-$user_info = $requser->fetch();
+    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $requser->execute(array($user_id));
+    $user_info = $requser->fetch();
 
-}else{
-    echo "non";
-}
-
-
-
-
-
-
+    }else{
+        echo "non";
+    }
 ?>
-
 
 <br><br>
 <div class="logo_main">
@@ -55,37 +43,31 @@ $user_info = $requser->fetch();
         <div class="col-md-9"> 
             <h3>CHAT</h3>
             <div class="chat">
-
-
-
                 <?php
-                //CHAT
-                 if (isset($_POST['submit'])){
-    if (isset($_POST['pseudo']) AND isset($_POST['message']) AND !empty($_POST['pseudo']) AND !empty($_POST['message'])){
-        $insert_msg = $bdd->prepare('INSERT INTO messages(pseudo, messages) VALUES (?, ?)');
-        $insert_msg->execute(array($_POST['pseudo'], $_POST['message']));
-}else{
-    echo "erreur";
-}
-}
-
-$allmsg = $bdd->query('SELECT * FROM messages');
-while($msg = $allmsg->fetch())
-echo $msg['pseudo']. " --> " .$msg['messages']. "<br>"; 
-?> 
-
-
-
+                    //CHAT
+                    if (isset($_POST['submit_msg'])){
+                        if (isset($_POST['message']) AND !empty($_POST['message'])){
+                            $insert_msg = $bdd->prepare('INSERT INTO messages(pseudo, messages) VALUES (?, ?)');
+                            $insert_msg->execute(array($user_info['login'], $_POST['message']));
+                    }else{
+                        echo "erreur";
+                        }
+                    }
+                    //CHAT AFFICHAGE
+                    $allmsg = $bdd->query('SELECT * FROM messages');
+                    while($msg = $allmsg->fetch())
+                    echo $msg['pseudo']. " --> " .$msg['messages']. "<br>"; 
+                ?> 
                 <div class="row">
                     <div class="col-md-12 bt">
                         <div class="send_msg msg">
                             <form action="">
                             <div class="test_inp">
                                 <div class="un">
-                                    <input type="text" class="inp_msg" name="" id="" placeholder="Ecrivez votre message ici ...">
+                                    <input type="text" class="inp_msg" name="message" id="" placeholder="Ecrivez votre message ici ...">
                                 </div>
                                 <div class="deux">
-                                    <input type="submit" name="" class="inp_msg_sub" id="">
+                                    <input type="submit" name="submit_msg" class="inp_msg_sub" id="">
                                 </div>
                             </div>
                             </form>
