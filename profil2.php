@@ -33,6 +33,12 @@ $user_info = $requser->fetch();
 }else{
     echo "non";
 }
+
+
+
+
+
+
 ?>
 
 
@@ -49,6 +55,27 @@ $user_info = $requser->fetch();
         <div class="col-md-9"> 
             <h3>CHAT</h3>
             <div class="chat">
+
+
+
+                <?php
+                //CHAT
+                 if (isset($_POST['submit'])){
+    if (isset($_POST['pseudo']) AND isset($_POST['message']) AND !empty($_POST['pseudo']) AND !empty($_POST['message'])){
+        $insert_msg = $bdd->prepare('INSERT INTO messages(pseudo, messages) VALUES (?, ?)');
+        $insert_msg->execute(array($_POST['pseudo'], $_POST['message']));
+}else{
+    echo "erreur";
+}
+}
+
+$allmsg = $bdd->query('SELECT * FROM messages');
+while($msg = $allmsg->fetch())
+echo $msg['pseudo']. " --> " .$msg['messages']. "<br>"; 
+?> 
+
+
+
                 <div class="row">
                     <div class="col-md-12 bt">
                         <div class="send_msg msg">

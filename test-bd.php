@@ -12,10 +12,24 @@
     <title>TITRE</title>
 </head>
 <body>
+<style>
 
-<h1><a href="main.php">MAIN 1</a></h1>
-<h1><a href="main2.php">MAIN 2</a></h1>
-<h1><a href="test-bd.php">TEST BDD</a></h1>
+
+</style>
+<!-- AD*wcJj6raYE -->
+
+<?php
+$bdd = new PDO("mysql: host=localhost; dbname=surikat1_messages; charset=utf8", "surikat1_un", "AD*wcJj6raYE");
+
+$allinfo = $bdd->query('SELECT * FROM messages');
+while($info = $allinfo->fetch())
+
+echo $info['pseudo']. " --> " .$info['messages']. "<br>";
+?>
+
+
+
+    
 
 
 
